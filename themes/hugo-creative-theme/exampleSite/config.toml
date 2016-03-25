@@ -1,6 +1,6 @@
-baseurl = "//neutrinoapp.com/"
+baseurl = "http://replace-this-with-your-hugo-site.com/"
 languageCode = "en-us"
-title = "Neutrino"
+title = "Hugo Creative Theme"
 theme = "hugo-creative-theme"
 
 [params]
@@ -19,8 +19,8 @@ theme = "hugo-creative-theme"
 
 	# To provide some metadata for search engines feel free to add a few
     # information about you and your website.
-	name = "Neutrino"
-	description = "Incredible realtime service"
+	name = "Your name"
+	description = "Your description"
 
 	# The path must be relative to the static folder
 	favicon = "favicon.ico"
@@ -28,21 +28,21 @@ theme = "hugo-creative-theme"
 
 	# Navigation
 	[params.navigation]
-		brand = "![alt text](img/logo.png)Neutrino"
+		brand = "Hugo Creative Theme"
 
 		[params.navigation.links]
 			about     = "About"
-			services  = "Features"
-			portfolio = "Access"
+			services  = "Services"
+			portfolio = "Portfolio"
 			contact   = "Contact"
 
 
 	# Hero section
 	[params.hero]
 		# To change the background of the hero section, replace the 'header.jpg' at './static/img' with your own.
-		slogan     = "Incredible realtime service"
-		subtitle   = "Think in models not messages"
-		buttonText = "Request access"
+		slogan     = "Your awesome slogan"
+		subtitle   = "[Lorem](//google.com) ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis nesciunt consequatur ut nihil voluptatem fugiat eos eveniet alias in veniam?"
+		buttonText = "Find out more"
 
 
 	# About section
@@ -54,27 +54,27 @@ theme = "hugo-creative-theme"
 
 	# Service section
 	[params.services]
-		headline = "Take a look at what we have to offer"
+		headline = "At your service"
 
         [[params.services.list]]
-            icon = "fa-database"
-            title = "Objects"
-            description = "Your models change without you having to handle messages manually!"
+            icon = "fa-diamond"
+            title = "Sturdy Templates"
+            description = "Our templates are updated regularly so they don't break."
 
         [[params.services.list]]
-			icon = "fa-users"
-			title = "Built-in authentication"
-			description = "Never worry about security again!"
+			icon = "fa-paper-plane"
+			title = "Ready to Ship"
+			description = "You can use this theme as is, or you can make changes!"
 
 		[[params.services.list]]
-            icon = "fa-github"
-            title = "Open source"
-            description = "Get all the benefits of open source software!"
+            icon = "fa-newspaper-o"
+            title = "Up to Date"
+            description = "We update dependencies to keep things fresh."
 
         [[params.services.list]]
             icon = "fa-heart"
             title = "Made with Love"
-            description = "When you make something with love, it naturally works better!"
+            description = "You have to make your websites with love these days!"
 
 
     # Portfolio modals
@@ -86,15 +86,15 @@ theme = "hugo-creative-theme"
 
     # Aside section
 	[params.aside]
-		headline = "We are still in alpha, but stay tuned!"
+		headline = "Get the Creative Theme for Hugo"
 
 		[params.aside.button]
-			text = "Request early access"
-			link = "http://eepurl.com/bx60K1"
+			text = "Download now"
+			link = "//github.com/digitalcraftsman/hugo-creative-theme"
 
 	# Contact section
 	[params.contact]
 		headline = "Let's Get In Touch!"
-		description = "Did you find something about the project interesting or you wanna know more? We will be glad to answer!"
-		phone = "Join chat!"
-		email = "gngeorgiev.it@gmail.com"
+		description = "Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!"
+		phone = "123-456-6789"
+		email = "feedback@startbootstrap.com"

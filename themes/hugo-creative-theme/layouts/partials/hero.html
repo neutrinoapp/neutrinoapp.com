@@ -1,0 +1,16 @@
+{{ "<!-- HEADER -->" | safeHTML }}
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h1>{{ with .Site.Params.hero.slogan }}{{ . }}{{ end }}</h1>
+            <hr>
+            <p>{{ with .Site.Params.hero.subtitle }}{{ . | markdownify }}{{ end }}</p>
+            <a href="#access" class="btn btn-primary btn-xl page-scroll">{{ with .Site.Params.hero.buttonText }}{{ . }}{{ end }}</a>
+			
+			<hr class="invisible">
+			<div>
+				<iframe style="width:130px" src="https://ghbtns.com/github-btn.html?user=neutrinoapp&repo=neutrino&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+			</div>
+        </div>
+    </div>
+</header>
