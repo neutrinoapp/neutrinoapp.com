@@ -1,13 +1,27 @@
 {{ "<!-- DEMO -->" | safeHTML }}
-<!--<section class="bg-primary" id="about">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">{{ with .Site.Params.about.headline }}{{ . }}{{ end }}</h2>
-                <hr class="light">
-                <p class="text-faded">{{ with .Site.Params.about.description }}{{ . | markdownify }}{{ end }}</p>
-                <a href="#" class="btn btn-default btn-xl">{{ with .Site.Params.about.buttonText }}{{ . }}{{ end }}</a>
-            </div>
-        </div>
+<section class="bg-primary" id="demo">
+    <div class="container-fluid">
+		<div class="row">
+			<div id="desktop" class="demo-icon desktop col-md-6">
+			</div>
+			<div id="tablet" class="demo-icon tablet col-md-6">
+			</div>			
+		</div>
+		
+		<div class="row">
+			<div id="server" class="demo-icon server center-block">
+			</div>
+		</div>
+		
+		<div class="row">
+			<div id="phone" class="demo-icon phone">
+			</div>
+			<div id="laptop" class="demo-icon laptop">
+			</div>
+		</div>
+		
+		<div class="row">
+			<input type="text" id="data-input" class="center-block" placeholder="Type something here....">
+		</div>
     </div>
-</section>-->
+</section>
