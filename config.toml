@@ -1,4 +1,4 @@
-baseurl = "//neutrinoapp.com/"
+baseurl = "http://neutrinoapp.com/"
 languageCode = "en-us"
 title = "Neutrino"
 theme = "hugo-creative-theme"
@@ -20,7 +20,7 @@ theme = "hugo-creative-theme"
 	# To provide some metadata for search engines feel free to add a few
     # information about you and your website.
 	name = "Neutrino"
-	description = "Incredible realtime service"
+	description = "Incredible realtime data service"
 
 	# The path must be relative to the static folder
 	favicon = "favicon.ico"
@@ -40,8 +40,9 @@ theme = "hugo-creative-theme"
 	# Hero section
 	[params.hero]
 		# To change the background of the hero section, replace the 'header.jpg' at './static/img' with your own.
-		slogan     = "Incredible realtime service"
-		subtitle   = "Think in models not messages"
+		slogan     = "Incredible realtime data service"
+		subtitle   = "Think in models, not messages"
+        demoText   = "Try demo"
 		buttonText = "Request access"
 
 
@@ -58,18 +59,28 @@ theme = "hugo-creative-theme"
 
         [[params.services.list]]
             icon = "fa-database"
-            title = "Objects"
-            description = "Your models change without you having to handle messages manually!"
+            title = "Awesome NoSQL storage"
+            description = "Have the freedom of NoSQL, combined with the power of SQL, such as joins."
+
+        [[params.services.list]]
+            icon = "fa-flash"
+            title = "Realtime updates"
+            description = "Your models change without you having to handle messages manually."
+            
+        [[params.services.list]]
+            icon = "fa-clock-o"
+            title = "Fast updates"
+            description = "Being hosted on GCE we strive to deliver our messages in less than 200ms!"
 
         [[params.services.list]]
 			icon = "fa-users"
 			title = "Built-in authentication"
-			description = "Never worry about security again!"
+			description = "Never worry about security again."
 
 		[[params.services.list]]
             icon = "fa-github"
             title = "Open source"
-            description = "Get all the benefits of open source software!"
+            description = "Get all the benefits of open source software."
 
         [[params.services.list]]
             icon = "fa-heart"

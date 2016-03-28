@@ -1,5 +1,14 @@
 <section class="no-padding" id="access">
-    <div class="container-fluid">
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>{{ with .Site.Params.aside.headline }}{{ . }}{{ end }}</h2>
+                <a target="_blank" href="{{ with .Site.Params.aside.button.link }}{{ . }}{{ end }}" class="btn btn-default btn-xl wow tada">{{ with .Site.Params.aside.button.text }}{{ . }}{{ end }}</a>
+            </div>
+        </div>
+    </aside>
+
+    <!--<div class="container-fluid">
         <div class="row no-gutter">
             {{ range .Site.Data.projects }}
             <div class="col-lg-4 col-sm-6">
@@ -19,5 +28,5 @@
             </div>
             {{ end }}
         </div>
-    </div>
+    </div>-->
 </section>
