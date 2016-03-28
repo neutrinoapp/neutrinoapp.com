@@ -1,4 +1,4 @@
-baseurl = "http://neutrinoapp.com/"
+baseurl = "//neutrinoapp.com/"
 languageCode = "en-us"
 title = "Neutrino"
 theme = "hugo-creative-theme"

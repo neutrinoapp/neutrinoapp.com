@@ -1,30 +1,13 @@
 {{ "<!-- ABOUT -->" | safeHTML }}
-<style>
-    .tile {
-        width: 50px;
-        height: 50px;
-        background-color: white;
-        border: #B94747 1px solid;
-        border-radius: 6px;
-    }
-
-    .tile > i {
-        font-size: 30px;
-        color: black;
-        position: relative;
-        top: 10px;
-    }
-
-    #game-board {
-        display: inline-block;
-    }
-
-    #game-board > .row {
-        display: flex;
-    }
-</style>
-<section class="bg-primary" id="about">
-    <div class="container" style="text-align: center;">
-        <div id="game-board"></div>
+<!--<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">{{ with .Site.Params.about.headline }}{{ . }}{{ end }}</h2>
+                <hr class="light">
+                <p class="text-faded">{{ with .Site.Params.about.description }}{{ . | markdownify }}{{ end }}</p>
+                <a href="#" class="btn btn-default btn-xl">{{ with .Site.Params.about.buttonText }}{{ . }}{{ end }}</a>
+            </div>
+        </div>
     </div>
-</section>
+</section>-->
