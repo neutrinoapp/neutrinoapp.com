@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="author" content="Neutrino">
-<meta name="description" content="Incredible realtime data service">
+<meta name="description" content="Realtime data service">
 <meta name="generator" content="Hugo 0.15" />
 <title>Neutrino</title>
 <!-- Favicon -->
@@ -66,13 +66,18 @@
 
 
         <!-- HEADER -->
-<header>
+<header>	
+	<video autoplay loop id="hero">
+		<source src="../img/header.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
+		<source src="../img/header.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
+	</video>
+			
     <div class="header-content">
-        <div class="header-content-inner">
-            <h1>Incredible realtime data service</h1>
+		<div class="header-content-inner">
+			<h1>Make realtime applications</h1>
             <hr>
-            <p>Think in models, not messages</p>
-            <a href="#access" class="btn btn-primary btn-xl page-scroll">Request access</a>
+            <p>Focus on your app, let us worry for the boring stuff</p>
+            <a href="#access" class="btn btn-primary btn-xl page-scroll">Email me when it&#39;s ready</a>
             <hr class="invisible">
             <a href="#demo" class="btn btn-secondary btn-xl page-scroll" disabled style="color: red">Try demo <br/> (Coming soon)</a>
 			
@@ -80,11 +85,11 @@
 			<div>
 				<iframe style="width:130px" src="https://ghbtns.com/github-btn.html?user=neutrinoapp&repo=neutrino&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 			</div>
-        </div>
+		</div>
     </div>
 </header>
 
-        <!-- ABOUT -->
+        <!-- DEMO -->
 
 
         <!-- SERVICES -->
@@ -103,8 +108,8 @@
             <div class="col-lg-4 col-md-4 text-center">
                 <div class="service-box">
                     <i class="fa fa-4x fa-database wow bounceIn text-primary"></i>
-                    <h3>Awesome NoSQL storage</h3>
-                    <p class="text-muted">Have the freedom of NoSQL, combined with the power of SQL, such as joins.</p>
+                    <h3>Schemaless storage</h3>
+                    <p class="text-muted">Have the freedom of NoSQL</p>
                 </div>
             </div>
             
@@ -120,7 +125,7 @@
                 <div class="service-box">
                     <i class="fa fa-4x fa-clock-o wow bounceIn text-primary"></i>
                     <h3>Fast updates</h3>
-                    <p class="text-muted">Being hosted on GCE we strive to deliver our messages in less than 200ms!</p>
+                    <p class="text-muted">Being hosted on the google cloud, we strive to deliver our messages in less than 200ms!</p>
                 </div>
             </div>
             
@@ -156,13 +161,11 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>We are still in alpha, but stay tuned!</h2>
-                <a target="_blank" href="http://eepurl.com/bx60K1" class="btn btn-default btn-xl wow tada">Request early access</a>
+                <h2>We are still in development, but we will let you know when the services launch!</h2>
+                <a target="_blank" href="http://eepurl.com/bx60K1" class="btn btn-default btn-xl wow tada">Subscribe</a>
             </div>
         </div>
     </aside>
-
-    
 </section>
 
         
@@ -209,4 +212,14 @@
 <script src="http://neutrinoapp.com/js/creative.js"></script>
 
     </body>
+	
+	<script>
+		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		ga('create', 'UA-53149012-3', 'auto');
+		ga('send', 'pageview');
+	</script>
 </html>
