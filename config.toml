@@ -20,7 +20,7 @@ theme = "hugo-creative-theme"
 	# To provide some metadata for search engines feel free to add a few
     # information about you and your website.
 	name = "Neutrino"
-	description = "Incredible realtime data service"
+	description = "Realtime data service"
 
 	# The path must be relative to the static folder
 	favicon = "favicon.ico"
@@ -40,10 +40,10 @@ theme = "hugo-creative-theme"
 	# Hero section
 	[params.hero]
 		# To change the background of the hero section, replace the 'header.jpg' at './static/img' with your own.
-		slogan     = "Incredible realtime data service"
-		subtitle   = "Think in models, not messages"
+		slogan     = "Make realtime applications"
+		subtitle   = "Focus on your app, let us worry for the boring stuff"
         demoText   = "Try demo"
-		buttonText = "Request access"
+		buttonText = "Email me when it's ready"
 
 
 	# About section
@@ -59,8 +59,8 @@ theme = "hugo-creative-theme"
 
         [[params.services.list]]
             icon = "fa-database"
-            title = "Awesome NoSQL storage"
-            description = "Have the freedom of NoSQL, combined with the power of SQL, such as joins."
+            title = "Schemaless storage"
+            description = "Have the freedom of NoSQL"
 
         [[params.services.list]]
             icon = "fa-flash"
@@ -70,7 +70,7 @@ theme = "hugo-creative-theme"
         [[params.services.list]]
             icon = "fa-clock-o"
             title = "Fast updates"
-            description = "Being hosted on GCE we strive to deliver our messages in less than 200ms!"
+            description = "Being hosted on the google cloud, we strive to deliver our messages in less than 200ms!"
 
         [[params.services.list]]
 			icon = "fa-users"
@@ -97,10 +97,10 @@ theme = "hugo-creative-theme"
 
     # Aside section
 	[params.aside]
-		headline = "We are still in alpha, but stay tuned!"
+		headline = "We are still in development, but we will let you know when the services launch!"
 
 		[params.aside.button]
-			text = "Request early access"
+			text = "Subscribe"
 			link = "http://eepurl.com/bx60K1"
 
 	# Contact section
