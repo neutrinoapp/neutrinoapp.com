@@ -10,13 +10,13 @@
 			<h1>{{ with .Site.Params.hero.slogan }}{{ . }}{{ end }}</h1>
             <hr>
             <p>{{ with .Site.Params.hero.subtitle }}{{ . | markdownify }}{{ end }}</p>
-            <a href="#access" class="btn btn-primary btn-xl page-scroll">{{ with .Site.Params.hero.buttonText }}{{ . }}{{ end }}</a>
+            <a href="#access" class="btn btn-primary btn-xl page-scroll" onclick="app.trackHeroSubscribe()">{{ with .Site.Params.hero.buttonText }}{{ . }}{{ end }}</a>
             <hr class="invisible">
-            <a href="#demo" class="btn btn-secondary btn-xl page-scroll" disabled style="color: red">{{ with .Site.Params.hero.demoText }}{{ . }}{{ end }} <br/> (Coming soon)</a>
+            <a href="#demo" class="btn btn-secondary btn-xl page-scroll" disabled style="color: red" onclick="app.trackTryDemo()">{{ with .Site.Params.hero.demoText }}{{ . }}{{ end }} <br/> (Coming soon)</a>
 			
 			<hr class="invisible">
 			<div>
-				<iframe style="width:130px" src="https://ghbtns.com/github-btn.html?user=neutrinoapp&repo=neutrino&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+				<iframe style="width:130px" id="github-iframe" src="https://ghbtns.com/github-btn.html?user=neutrinoapp&repo=neutrino&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
 			</div>
 		</div>
     </div>
