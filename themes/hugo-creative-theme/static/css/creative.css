@@ -215,7 +215,7 @@ header .header-content .header-content-inner hr {
 
 header .header-content .header-content-inner p {
     margin-bottom: 50px;
-    font-size: 20px !important; 
+    font-size: 20px !important;
     font-weight: 300;
     color: white;
 }
@@ -487,7 +487,7 @@ body {
 .navbar-brand > img {
 	width: 30px;
 	display: inline;
-	margin-right: 10px;	
+	margin-right: 10px;
 }
 
 hr.invisible {
@@ -509,33 +509,85 @@ hr.invisible {
 
 .demo-icon {
 	background-size: cover;
-	width: 100px;
-	height: 100px;
+	width: 120px;
+	height: 220px;
 	display: inline-block;
 	padding: 10px;
 }
 
 .desktop {
-	background-image: url("../img/desktop.svg");
+	/*background-image: url("../img/desktop.svg");*/
+    border: black solid 2px;
+    border-radius: 15px;
+    padding: 6px;
+    padding-top: 12px;
+    font-size: 10px;
+    background-color: #222222;
 }
 
-.tablet {
-	background-image: url("../img/tablet.svg");
-	float: right;
+.desktop ul {
+    height: 155px;
+    list-style-type: none;
+    padding: 5px;
+    margin: 0;
 }
 
-.phone {
-	background-image: url("../img/phone.svg");
+.inner-desktop {
+    border-radius: 10px;
+    background-color: white;
 }
 
-.laptop {
-	background-image: url("../img/laptop.svg");
-	float: right;
+.desktop ul li {
+    color: #222222;
+}
+
+.text-input-desktop {
+    bottom: 0;
+    width: 90%;
+    color: #222222;
+    border-radius: 2px;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 5px;
+}
+
+.desktop-button {
+    background-color: white;
+    width: 12px;
+    height: 12px;
+    border-radius: 6px;
+    margin-top: 7px;
+    margin-left: 44%;
+    text-align: center;
+}
+
+.second-desktop {
+    float: right;
+    margin-right: 25%;
+}
+
+.fourth-desktop {
+    margin-left: 17%;
+}
+
+.third-desktop {
+    float: right;
+    margin-right: 17%;
+}
+
+.first-desktop {
+    margin-left: 24%;
 }
 
 .server {
-	background-image: url("../img/logo.png");
-	display: block !IMPORTANT;
-	margin: 0 auto;
-	float: none;
+    background-image: url("../img/logo.png");
+    display: block !IMPORTANT;
+    margin: 0 auto;
+    float: none;
+    background-size: cover;
+    width: 125px;
+    height: 120px;
+    padding: 10px;
 }
