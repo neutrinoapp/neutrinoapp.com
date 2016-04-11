@@ -1,67 +1,58 @@
-jsPlumb.Defaults.Container = 'demo';
-
-jsPlumb.ready(function () {
-	jsPlumb.connect({
-		source: 'server',
-		target: 'tablet',
-		anchors: ['Right', 'Left'],
-		connector: 'Straight'
-	});
-
-	jsPlumb.connect({
-		source: 'server',
-		target: 'laptop',
-		anchors: ['Right', 'Left'],
-		connector: 'Straight'
-	});
-
-	jsPlumb.connect({
-		source: 'server',
-		target: 'desktop',
-		anchors: ['Left', 'Right'],
-		connector: 'Straight'
-	});
-
-	jsPlumb.connect({
-		source: 'server',
-		target: 'phone',
-		anchors: ['Left', 'Right'],
-		connector: 'Straight'
-	});
-
-	jsPlumb.connect({
-		source: 'server',
-		target: 'data-input',
-		anchors: ['Bottom', 'Top'],
-		connector: 'Straight'
-	})
-});
-
-$(window).resize(function(){
-	jsPlumb.repaintEverything();
-});
-
-function onType (e) {
-    //Check for enter keyCode
-    if (e.keyCode === 13) {
-        var element = e.target;
-
-        addText(element.value, '#phone4-list');
-        addText(element.value, '#phone3-list');
-        addText(element.value, '#phone2-list');
-        addText(element.value, '#phone1-list');
-
-        element.value = '';
+(function () {
+    var clientId;
+    if (localStorage.getItem('clientId')) {
+        clientId = localStorage.getItem('clientId');
+    } else {
+        clientId = Math.random().toString(36).substring(7);
+        localStorage.setItem('clientId', clientId);
     }
-}
 
-function addText (value, elementId) {
-    var li4 = $('<li></li>');
-    li4.text(value);
-    $(elementId).append(li4);
-}
+    var app = window.app = Neutrino.app('39d6e7592c2043899f9108d5ad6156f2');
+    app.auth.login('test', 'test').then(init);
+    var collection = window.collection = app.use(clientId);
+    var objectId;
 
-$("#phone4").keypress(onType);
-$("#phone3").keypress(onType);
-$("#phone2").keypress(onType);
-$("#phone1").keypress(onType);
+    function init() {
+        collection.objects()
+            .then(function (data) {
+                if (!data.length) {
+                    return collection.object({text: ''});
+                }
+
+                return data[0];
+            })
+            .then(bind);
+    }
+
+    function bind(object) {
+        objectId = object.id;
+
+        var objectsPromises = new Array(4).fill(collection.object(objectId, {realtime: true}));
+        Promise.all(objectsPromises)
+            .then(function (realtimeObjects) {
+                var selectors = [
+                    '#iphone-6-input',
+                    '#mac-input',
+                    '#htc-input',
+                    '#iphone-6-plus-input'
+                ];
+
+                window.app.o = realtimeObjects;
+
+                realtimeObjects.forEach(function (realtimeObject, index) {
+                    var selector = selectors[index];
+                    new Vue({
+                        el: selector,
+                        data: realtimeObject
+                    });
+                    $(selector).css('display', 'block');
+                });
+            });
+    }
+}());
+
+$(function() {
+    $('.marvel-device').click(function () {
+        $(this).find('input').focus();
+    });
+});

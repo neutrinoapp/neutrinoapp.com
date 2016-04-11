@@ -507,25 +507,7 @@ hr.invisible {
 	min-height: 600px;
 }
 
-.demo-icon {
-	background-size: cover;
-	width: 120px;
-	height: 220px;
-	display: inline-block;
-	padding: 10px;
-}
-
-.desktop {
-	/*background-image: url("../img/desktop.svg");*/
-    border: black solid 2px;
-    border-radius: 15px;
-    padding: 6px;
-    padding-top: 12px;
-    font-size: 10px;
-    background-color: #222222;
-}
-
-.desktop ul {
+.device ul {
     height: 155px;
     list-style-type: none;
     padding: 5px;
@@ -537,7 +519,7 @@ hr.invisible {
     background-color: white;
 }
 
-.desktop ul li {
+.device ul li {
     color: #222222;
 }
 
@@ -590,4 +572,60 @@ hr.invisible {
     width: 125px;
     height: 120px;
     padding: 10px;
+}
+
+.marvel-device {
+    transform: scale(0.2);
+    transform-origin: top left;
+}
+
+.device-container{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.device-container-right {
+    float: right;
+    margin-right: 20px;
+}
+
+.device-container-iphone-6 {
+    width: 85px;
+    height: 175px;
+}
+
+.device-container-mac {
+    width: 210px;
+    height: 144px;
+}
+
+.device-container-htc {
+    width: 74px;
+    height: 148px;
+}
+
+.device-container-iphone-6-plus {
+    width: 94px;
+    height: 192px;
+}
+
+.demo-row:nth-child(1) {
+    height: 175px;
+}
+
+.input {
+    font-size: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: none;
+    background: transparent;
+    border: 0;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.marvel-device {
+    cursor: text;
 }

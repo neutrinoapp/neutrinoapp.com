@@ -1,57 +1,67 @@
 {{ "<!-- DEMO -->" | safeHTML }}
 <section class="bg-primary" id="demo">
     <div class="container-fluid">
-        <!--<div id="desktop" class="demo-icon desktop">
-        </div>-->
-
-        <div class="demo-icon desktop first-desktop">
-            <div class="inner-desktop">
-                <ul id="phone1-list">
-                    <li>some text</li>
-                    <li>some text2</li>
-                </ul>
-                    <input class="text-input-desktop" id="phone1" type="text" placeholder="type here" />
+        <div class="row demo-row">
+            <div class="device-container device-container-iphone-6">
+                <div class="marvel-device iphone6 black">
+                    <div class="top-bar"></div>
+                    <div class="sleep"></div>
+                    <div class="volume"></div>
+                    <div class="camera"></div>
+                    <div class="sensor"></div>
+                    <div class="speaker"></div>
+                    <div class="screen">
+                        <input id="iphone-6-input" class="input" type="text" v-model="text"/>
+                    </div>
+                    <div class="home"></div>
+                    <div class="bottom-bar"></div>
+                </div>
             </div>
-            <div class="desktop-button">
+
+            <div class="device-container device-container-right device-container-mac">
+                <div class="marvel-device macbook">
+                    <div class="top-bar"></div>
+                    <div class="camera"></div>
+                    <div class="screen">
+                        <input id="mac-input" class="input" type="text" v-model="text"/>
+                    </div>
+                    <div class="bottom-bar"></div>
+                </div>
             </div>
         </div>
 
-        <div class="demo-icon desktop second-desktop">
-            <div class="inner-desktop">
-                <ul id="phone2-list">
-                    <li>some text</li>
-                    <li>some text2</li>
-                </ul>
-                <input class="text-input-desktop" id="phone2" type="text" placeholder="type here" />
-            </div>
-            <div class="desktop-button">
-            </div>
+        <div class="row center-block">
+            <div id="server" class="demo-icon server center-block"></div>
         </div>
 
-        <div id="server" class="server center-block">
-        </div>
+        <div class="row">
+            <div class="device-container device-container-htc">
+                <div class="marvel-device htc-one">
+                    <div class="top-bar"></div>
+                    <div class="camera"></div>
+                    <div class="sensor"></div>
+                    <div class="speaker"></div>
+                    <div class="screen">
+                        <input id="htc-input" class="input" type="text" v-model="text"/>
+                    </div>
+                </div>
+            </div>
 
-        <div class="demo-icon desktop third-desktop">
-            <div class="inner-desktop">
-                <ul id="phone3-list">
-                    <li>some text</li>
-                    <li>some text2</li>
-                </ul>
-                <input class="text-input-desktop" id="phone3" type="text" placeholder="type here" />
-            </div>
-            <div class="desktop-button">
-            </div>
-        </div>
+            <div class="device-container-right device-container-iphone-6-plus">
+                <div class="marvel-device iphone6plus black">
+                    <div class="top-bar"></div>
+                    <div class="sleep"></div>
+                    <div class="volume"></div>
+                    <div class="camera"></div>
+                    <div class="sensor"></div>
+                    <div class="speaker"></div>
+                    <div class="screen">
+                        <input id="iphone-6-plus-input" class="input" type="text" v-model="text"/>
+                    </div>
+                    <div class="home"></div>
+                    <div class="bottom-bar"></div>
+                </div>
 
-        <div class="demo-icon desktop fourth-desktop">
-            <div class="inner-desktop">
-                <ul id="phone4-list">
-                    <li>some text</li>
-                    <li>some text2</li>
-                </ul>
-                <input class="text-input-desktop" id="phone4" type="text" placeholder="type here" />
-            </div>
-            <div class="desktop-button">
             </div>
         </div>
     </div>
