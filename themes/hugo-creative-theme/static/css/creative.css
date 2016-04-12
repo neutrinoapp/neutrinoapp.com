@@ -617,7 +617,6 @@ hr.invisible {
     font-size: 50px;
     overflow: hidden;
     text-overflow: ellipsis;
-    display: none;
     background: transparent;
     border: 0;
     outline: none;

@@ -41,11 +41,14 @@
 
                 realtimeObjects.forEach(function (realtimeObject, index) {
                     var selector = selectors[index];
-                    new Vue({
-                        el: selector,
-                        data: realtimeObject
+                    var el = $(selector);
+                    el.keyup(function () {
+                        realtimeObject.text = $(this).val();
                     });
-                    $(selector).css('display', 'block');
+                    realtimeObject.on(Neutrino.ObjectEvents.propertyChanged, function() {
+                        el.val(realtimeObject.text);
+                    });
+                    el.val(realtimeObject.text);
                 });
             });
     }

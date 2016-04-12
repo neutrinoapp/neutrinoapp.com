@@ -7619,7 +7619,7 @@ module.exports={
   "_args": [
     [
       "autobahn@^0.9.9",
-      "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript"
+      "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk"
     ]
   ],
   "_from": "autobahn@>=0.9.9 <0.10.0",
@@ -7649,7 +7649,7 @@ module.exports={
   "_shasum": "e99ef1ea9b2c98a55c44fb19bb45cebc1f521907",
   "_shrinkwrap": null,
   "_spec": "autobahn@^0.9.9",
-  "_where": "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript",
+  "_where": "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk",
   "author": {
     "name": "Tavendo GmbH"
   },
@@ -11736,7 +11736,7 @@ exports.getRoot = function getRoot (file) {
 
   BN.prototype.redShl = function redShl (num) {
     assert(this.red, 'redShl works only with red numbers');
-    return this.red.ushl(this, num);
+    return this.red.shl(this, num);
   };
 
   BN.prototype.redMul = function redMul (num) {
@@ -29326,7 +29326,7 @@ module.exports={
   "_args": [
     [
       "elliptic@^6.0.0",
-      "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign"
+      "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -29357,7 +29357,7 @@ module.exports={
   "_shasum": "18e46d7306b0951275a2d42063270a14b74ebe99",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign",
+  "_where": "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk/node_modules/browserify-sign",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
@@ -44165,11 +44165,18 @@ assert.equal = function assertEqual(l, r, msg) {
 
   var testingExposeCycleCount = global.testingExposeCycleCount;
 
+  var ignoreObjectObserve = false;
+  var objectObserveDetected = false;
   // Detect and do basic sanity checking on Object/Array.observe.
-  function detectObjectObserve() {
+  function hasObserve() {
     if (typeof Object.observe !== 'function' ||
-        typeof Array.observe !== 'function') {
+        typeof Array.observe !== 'function' ||
+        ignoreObjectObserve) {
       return false;
+    }
+
+    if (objectObserveDetected) {
+      return true;
     }
 
     var records = [];
@@ -44203,10 +44210,8 @@ assert.equal = function assertEqual(l, r, msg) {
     Object.unobserve(test, callback);
     Array.unobserve(arr, callback);
 
-    return true;
+    return objectObserveDetected = true;
   }
-
-  var hasObserve = detectObjectObserve();
 
   function detectEval() {
     // Don't test for eval if we're running in a Chrome App environment.
@@ -44667,7 +44672,7 @@ assert.equal = function assertEqual(l, r, msg) {
     return true;
   }
 
-  var runEOM = hasObserve ? (function(){
+  var runEOM = hasObserve() ? (function(){
     return function(fn) {
       return Promise.resolve().then(fn);
     };
@@ -44918,7 +44923,7 @@ assert.equal = function assertEqual(l, r, msg) {
     }
   };
 
-  var collectObservers = !hasObserve;
+  var collectObservers = !hasObserve();
   var allObservers;
   Observer._allObserversCount = 0;
 
@@ -44946,7 +44951,7 @@ assert.equal = function assertEqual(l, r, msg) {
     if (runningMicrotaskCheckpoint)
       return;
 
-    if (!collectObservers)
+    if (hasObserve())
       return;
 
     runningMicrotaskCheckpoint = true;
@@ -44998,7 +45003,7 @@ assert.equal = function assertEqual(l, r, msg) {
     arrayObserve: false,
 
     connect_: function(callback, target) {
-      if (hasObserve) {
+      if (hasObserve()) {
         this.directObserver_ = getObservedObject(this, this.value_,
                                                  this.arrayObserve);
       } else {
@@ -45020,7 +45025,7 @@ assert.equal = function assertEqual(l, r, msg) {
     check_: function(changeRecords, skipChanges) {
       var diff;
       var oldValues;
-      if (hasObserve) {
+      if (hasObserve()) {
         if (!changeRecords)
           return false;
 
@@ -45035,7 +45040,7 @@ assert.equal = function assertEqual(l, r, msg) {
       if (diffIsEmpty(diff))
         return false;
 
-      if (!hasObserve)
+      if (!hasObserve())
         this.oldObject_ = this.copyObject(this.value_);
 
       this.report_([
@@ -45051,7 +45056,7 @@ assert.equal = function assertEqual(l, r, msg) {
     },
 
     disconnect_: function() {
-      if (hasObserve) {
+      if (hasObserve()) {
         this.directObserver_.close();
         this.directObserver_ = undefined;
       } else {
@@ -45063,7 +45068,7 @@ assert.equal = function assertEqual(l, r, msg) {
       if (this.state_ != OPENED)
         return;
 
-      if (hasObserve)
+      if (hasObserve())
         this.directObserver_.deliver(false);
       else
         dirtyCheck(this);
@@ -45097,7 +45102,7 @@ assert.equal = function assertEqual(l, r, msg) {
 
     check_: function(changeRecords) {
       var splices;
-      if (hasObserve) {
+      if (hasObserve()) {
         if (!changeRecords)
           return false;
         splices = projectArraySplices(this.value_, changeRecords);
@@ -45109,7 +45114,7 @@ assert.equal = function assertEqual(l, r, msg) {
       if (!splices || !splices.length)
         return false;
 
-      if (!hasObserve)
+      if (!hasObserve())
         this.oldObject_ = this.copyObject(this.value_);
 
       this.report_([splices]);
@@ -45147,7 +45152,7 @@ assert.equal = function assertEqual(l, r, msg) {
     },
 
     connect_: function() {
-      if (hasObserve)
+      if (hasObserve())
         this.directObserver_ = getObservedSet(this, this.object_);
 
       this.check_(undefined, true);
@@ -45197,7 +45202,7 @@ assert.equal = function assertEqual(l, r, msg) {
     __proto__: Observer.prototype,
 
     connect_: function() {
-      if (hasObserve) {
+      if (hasObserve()) {
         var object;
         var needsDirectObserver = false;
         for (var i = 0; i < this.observed_.length; i += 2) {
@@ -45857,7 +45862,11 @@ assert.equal = function assertEqual(l, r, msg) {
   expose.Observer = Observer;
   expose.Observer.runEOM_ = runEOM;
   expose.Observer.observerSentinel_ = observerSentinel; // for testing.
-  expose.Observer.hasObjectObserve = hasObserve;
+  expose.Observer.hasObjectObserve = hasObserve();
+  expose.Observer.ignoreObjectObserve = function (value) {
+      ignoreObjectObserve = value;
+  };
+
   expose.ArrayObserver = ArrayObserver;
   expose.ArrayObserver.calculateSplices = function(current, previous) {
     return arraySplice.calculateSplices(current, previous);
@@ -45869,6 +45878,7 @@ assert.equal = function assertEqual(l, r, msg) {
   expose.CompoundObserver = CompoundObserver;
   expose.Path = Path;
   expose.ObserverTransform = ObserverTransform;
+
 
 })(typeof global !== 'undefined' && global && typeof module !== 'undefined' && module ? global : this || window);
 
@@ -65323,6 +65333,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ObjectObserver = observejs.ObjectObserver;
+observejs['Observer']['ignoreObjectObserve'](true);
 
 var ObjectEvents = exports.ObjectEvents = function ObjectEvents() {
     _classCallCheck(this, ObjectEvents);
@@ -65654,7 +65665,7 @@ var ObjectFactory = exports.ObjectFactory = function () {
 }();
 
 },{"./ajaxObject":283,"./httpClient":286,"./realtimeArray":291,"./realtimeObject":292,"./webSocketClient":294}],290:[function(require,module,exports){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
     value: true
@@ -65670,7 +65681,7 @@ var NeutrinoPlatform = exports.NeutrinoPlatform = function () {
     }
 
     _createClass(NeutrinoPlatform, null, [{
-        key: 'performMicrotask',
+        key: "performMicrotask",
         value: function performMicrotask() {
             //TODO: fix in observe-js for this to work even when object.observe is available
             Platform.performMicrotaskCheckpoint();
@@ -65680,12 +65691,9 @@ var NeutrinoPlatform = exports.NeutrinoPlatform = function () {
     return NeutrinoPlatform;
 }();
 
-if (!Object['observe']) {
-    //observe.js does not work automatically if we do not have Object.observe
-    setInterval(function () {
-        NeutrinoPlatform.performMicrotask();
-    }, 100);
-}
+setInterval(function () {
+    NeutrinoPlatform.performMicrotask();
+}, 10);
 
 },{}],291:[function(require,module,exports){
 'use strict';
@@ -65907,6 +65915,7 @@ var RealtimeObject = exports.RealtimeObject = function (_NeutrinoObject) {
 
         var webSocketClient = new _webSocketClient.WebSocketClient(_this._getApp(), _this._getDataType());
         _this._setProp('webSocketClient', webSocketClient);
+        _this._setProp('messageHistory', {});
         setTimeout(function () {
             //Delay to avoid any unwanted early events
             webSocketClient.onUpdateMessage(_this._processMessage.bind(_this), _this.id);
@@ -65927,6 +65936,17 @@ var RealtimeObject = exports.RealtimeObject = function (_NeutrinoObject) {
     }, {
         key: '_processMessage',
         value: function _processMessage(m) {
+            var historyKey = m.op + '_' + m.topic;
+            var messageHistory = this._getProp('messageHistory');
+            if (messageHistory[historyKey]) {
+                var lastMessage = messageHistory[historyKey];
+                var lastMessageTimestamp = new Date(lastMessage.timestamp).getDate();
+                var newMessageTimestamp = new Date(m.timestamp).getDate();
+                if (newMessageTimestamp < lastMessageTimestamp || newMessageTimestamp === lastMessageTimestamp) {
+                    return;
+                }
+            }
+            messageHistory[historyKey] = m;
             var objDiff = diff.diff(this, m.pld);
             if (!objDiff || Array.isArray(objDiff) && !objDiff.length) {
                 return;
