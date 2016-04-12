@@ -27,16 +27,14 @@
     function bind(object) {
         objectId = object.id;
 
-        var objectsPromises = new Array(4).fill(collection.object(objectId, {realtime: true}));
+        var selectors = [
+            '#iphone-6-input',
+            '#mac-input',
+            '#htc-input'
+        ];
+        var objectsPromises = new Array(selectors.length).fill(collection.object(objectId));
         Promise.all(objectsPromises)
             .then(function (realtimeObjects) {
-                var selectors = [
-                    '#iphone-6-input',
-                    '#mac-input',
-                    '#htc-input',
-                    '#iphone-6-plus-input'
-                ];
-
                 window.app.o = realtimeObjects;
 
                 realtimeObjects.forEach(function (realtimeObject, index) {
