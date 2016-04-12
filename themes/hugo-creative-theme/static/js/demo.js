@@ -1,15 +1,15 @@
 (function () {
-    var clientId;
+    var collectionName;
     if (localStorage.getItem('clientId')) {
-        clientId = localStorage.getItem('clientId');
+        collectionName = localStorage.getItem('clientId');
     } else {
-        clientId = Math.random().toString(36).substring(7);
-        localStorage.setItem('clientId', clientId);
+        collectionName = Math.random().toString(36).substring(7);
+        localStorage.setItem('clientId', collectionName);
     }
 
-    var app = window.app = Neutrino.app('39d6e7592c2043899f9108d5ad6156f2');
+    var app = window.app = Neutrino.app('cf8b71c381ca4eba8b288abdb74810a9');
     app.auth.login('test', 'test').then(init);
-    var collection = window.collection = app.use(clientId);
+    var collection = window.collection = app.collection(collectionName);
     var objectId;
 
     function init() {

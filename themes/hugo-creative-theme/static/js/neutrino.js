@@ -7619,7 +7619,7 @@ module.exports={
   "_args": [
     [
       "autobahn@^0.9.9",
-      "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk"
+      "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript"
     ]
   ],
   "_from": "autobahn@>=0.9.9 <0.10.0",
@@ -7649,7 +7649,7 @@ module.exports={
   "_shasum": "e99ef1ea9b2c98a55c44fb19bb45cebc1f521907",
   "_shrinkwrap": null,
   "_spec": "autobahn@^0.9.9",
-  "_where": "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk",
+  "_where": "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript",
   "author": {
     "name": "Tavendo GmbH"
   },
@@ -11736,7 +11736,7 @@ exports.getRoot = function getRoot (file) {
 
   BN.prototype.redShl = function redShl (num) {
     assert(this.red, 'redShl works only with red numbers');
-    return this.red.shl(this, num);
+    return this.red.ushl(this, num);
   };
 
   BN.prototype.redMul = function redMul (num) {
@@ -29326,7 +29326,7 @@ module.exports={
   "_args": [
     [
       "elliptic@^6.0.0",
-      "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk/node_modules/browserify-sign"
+      "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -29357,7 +29357,7 @@ module.exports={
   "_shasum": "18e46d7306b0951275a2d42063270a14b74ebe99",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/gngeorgiev/Dropbox/Projects/neutrino-javascript-sdk/node_modules/browserify-sign",
+  "_where": "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
@@ -45379,7 +45379,8 @@ assert.equal = function assertEqual(l, r, msg) {
   var expectedRecordTypes = {
     add: true,
     update: true,
-    delete: true
+    delete: true,
+    reconfigure: true
   };
 
   function diffObjectFromChangeRecords(object, changeRecords, oldValues) {
@@ -45397,7 +45398,7 @@ assert.equal = function assertEqual(l, r, msg) {
       if (!(record.name in oldValues))
         oldValues[record.name] = record.oldValue;
 
-      if (record.type == 'update')
+      if (record.type == 'update' || record.type == 'reconfigure')
         continue;
 
       if (record.type == 'add') {
@@ -65068,6 +65069,12 @@ var _objectFactory = require('./objectFactory');
 
 var _httpClient = require('./httpClient');
 
+var _lodash = require('lodash');
+
+var _ = _interopRequireWildcard(_lodash);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var Data = exports.Data = function () {
@@ -65084,6 +65091,9 @@ var Data = exports.Data = function () {
         key: 'object',
         value: function object(param, opts) {
             opts = opts || {};
+            _.defaults(opts, {
+                realtime: true
+            });
             if (typeof param === 'string') {
                 var id = param;
                 return this._factory.get(id, this.dataType, opts);
@@ -65106,7 +65116,7 @@ var Data = exports.Data = function () {
     return Data;
 }();
 
-},{"./httpClient":286,"./objectFactory":289}],286:[function(require,module,exports){
+},{"./httpClient":286,"./objectFactory":289,"lodash":172}],286:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -65222,7 +65232,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _auth = require('./auth');
 
-var _data = require('./data');
+var _collection = require('./collection');
 
 var _object = require('./object');
 
@@ -65255,17 +65265,17 @@ var App = exports.App = function () {
     }
 
     _createClass(App, [{
-        key: 'use',
-        value: function use(type) {
+        key: 'collection',
+        value: function collection(type) {
             if (!this._dataCache[type]) {
-                this._dataCache[type] = new _data.Data(this, type);
+                this._dataCache[type] = new _collection.Data(this, type);
             }
             return this._dataCache[type];
         }
     }], [{
         key: 'app',
-        value: function app(appId) {
-            return new App(appId);
+        value: function app(appId, opts) {
+            return new App(appId, opts);
         }
     }]);
 
@@ -65282,7 +65292,7 @@ if (typeof window !== 'undefined') {
     undefined['Neutrino'] = App;
 }
 
-},{"./auth":284,"./data":285,"./object":288,"./realtimeArray":291,"./utils":293}],288:[function(require,module,exports){
+},{"./auth":284,"./collection":285,"./object":288,"./realtimeArray":291,"./utils":293}],288:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -65322,6 +65332,7 @@ ObjectEvents.propertyAdded = 'property-added';
 ObjectEvents.propertyChanged = 'property-changed';
 ObjectEvents.propertyRemoved = 'property-removed';
 ObjectEvents.change = 'change';
+ObjectEvents.fetch = 'fetch';
 
 var NeutrinoObject = exports.NeutrinoObject = function () {
     function NeutrinoObject(app, id, dataType, opts, observe, initial) {
@@ -65395,7 +65406,11 @@ var NeutrinoObject = exports.NeutrinoObject = function () {
     }, {
         key: 'emit',
         value: function emit(ev, data) {
-            this._getEmitter().emit(ev, data, this);
+            if (data) {
+                this._getEmitter().emit(ev, data, this);
+            } else {
+                this._getEmitter().emit(ev, this);
+            }
         }
     }, {
         key: 'on',
@@ -65420,6 +65435,12 @@ var NeutrinoObject = exports.NeutrinoObject = function () {
         key: 'off',
         value: function off(ev, cb) {
             this._getEmitter().off(ev, cb);
+            return this;
+        }
+    }, {
+        key: 'once',
+        value: function once(ev, cb) {
+            this._getEmitter().once(ev, cb);
             return this;
         }
     }, {
