@@ -11,21 +11,22 @@
                     <div class="sensor"></div>
                     <div class="speaker"></div>
                     <div class="screen">
-                        <input id="iphone-6-input" class="input" type="text"/>
+                        <input id="iphone-6-input" class="input" type="text" v-model="text"/>
                     </div>
                     <div class="home"></div>
                     <div class="bottom-bar"></div>
                 </div>
             </div>
 
-            <div class="device-container device-container-right device-container-mac">
-                <div class="marvel-device macbook">
+            <div class="device-container device-container-right device-container-htc">
+                <div class="marvel-device htc-one">
                     <div class="top-bar"></div>
                     <div class="camera"></div>
+                    <div class="sensor"></div>
+                    <div class="speaker"></div>
                     <div class="screen">
-                        <input id="mac-input" class="input" type="text"/>
+                        <input id="htc-input" class="input" type="text" v-model="text"/>
                     </div>
-                    <div class="bottom-bar"></div>
                 </div>
             </div>
         </div>
@@ -35,33 +36,15 @@
         </div>
 
         <div class="row">
-            <div class="device-container device-container-htc">
-                <div class="marvel-device htc-one">
+            <div class="device-container device-container-mac center-block">
+                <div class="marvel-device macbook">
                     <div class="top-bar"></div>
                     <div class="camera"></div>
-                    <div class="sensor"></div>
-                    <div class="speaker"></div>
                     <div class="screen">
-                        <input id="htc-input" class="input" type="text"/>
+                        <input id="mac-input" class="input" type="text" v-model="text"/>
                     </div>
-                </div>
-            </div>
-
-            <div class="device-container-right device-container-iphone-6-plus">
-                <div class="marvel-device iphone6plus black">
-                    <div class="top-bar"></div>
-                    <div class="sleep"></div>
-                    <div class="volume"></div>
-                    <div class="camera"></div>
-                    <div class="sensor"></div>
-                    <div class="speaker"></div>
-                    <div class="screen">
-                        <input id="iphone-6-plus-input" class="input" type="text"/>
-                    </div>
-                    <div class="home"></div>
                     <div class="bottom-bar"></div>
                 </div>
-
             </div>
         </div>
     </div>

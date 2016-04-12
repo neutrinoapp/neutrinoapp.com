@@ -438,7 +438,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
     border-color: #FF3B3B;
-    background-color: #FF3B3B;
+    background-color: rgba(255,59,59,0.85);
 }
 
 .btn-primary .badge {
@@ -495,7 +495,7 @@ hr.invisible {
 }
 
 #hero {
-	position: absolute;
+	/*position: absolute;*/
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -504,6 +504,7 @@ hr.invisible {
 }
 
 #demo {
+	max-height: 650px;
 	min-height: 600px;
 }
 
@@ -523,46 +524,6 @@ hr.invisible {
     color: #222222;
 }
 
-.text-input-desktop {
-    bottom: 0;
-    width: 90%;
-    color: #222222;
-    border-radius: 2px;
-    margin-right: 5px;
-    margin-left: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    margin-bottom: 5px;
-}
-
-.desktop-button {
-    background-color: white;
-    width: 12px;
-    height: 12px;
-    border-radius: 6px;
-    margin-top: 7px;
-    margin-left: 44%;
-    text-align: center;
-}
-
-.second-desktop {
-    float: right;
-    margin-right: 25%;
-}
-
-.fourth-desktop {
-    margin-left: 17%;
-}
-
-.third-desktop {
-    float: right;
-    margin-right: 17%;
-}
-
-.first-desktop {
-    margin-left: 24%;
-}
-
 .server {
     background-image: url("../img/logo.png");
     display: block !IMPORTANT;
@@ -579,34 +540,19 @@ hr.invisible {
     transform-origin: top left;
 }
 
-.device-container{
-    display: inline-block;
-    margin-left: 20px;
-}
-
-.device-container-right {
-    float: right;
-    margin-right: 20px;
-}
-
 .device-container-iphone-6 {
     width: 85px;
     height: 175px;
-}
-
-.device-container-mac {
-    width: 210px;
-    height: 144px;
+    display: inline-block;
+    margin-left: 25%;
 }
 
 .device-container-htc {
     width: 74px;
     height: 148px;
-}
-
-.device-container-iphone-6-plus {
-    width: 94px;
-    height: 192px;
+    float: right;
+    margin-right: 25%;
+    margin-top: 1%;
 }
 
 .demo-row:nth-child(1) {
@@ -627,4 +573,23 @@ hr.invisible {
 
 .marvel-device {
     cursor: text;
+}
+
+@media only screen and (max-width: 640px) {
+    .device-container-iphone-6 {
+        display: none;
+    }
+
+    .device-container-htc {
+        float: none;
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+.device-container-mac {
+    width: 210px;
+    height: 144px;
+    margin-top: 5%;
 }
