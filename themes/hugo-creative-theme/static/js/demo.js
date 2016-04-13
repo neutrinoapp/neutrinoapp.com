@@ -22,7 +22,7 @@
         collection.objects()
             .then(function (data) {
                 if (!data.length) {
-                    return collection.object({text: ''});
+                    return collection.object({text: 'Type here! \n \n ( ^_^ )'});
                 }
 
                 return data[0];
@@ -55,6 +55,10 @@
                         el.val(realtimeObject.text);
                     });
                     el.val(realtimeObject.text);
+
+                    setInterval(function(){
+                        el[0].scrollTop = el[0].scrollHeight;
+                    }, 200);
                 });
             });
     }
@@ -93,7 +97,7 @@
 
 $(function() {
     $('.marvel-device').click(function () {
-        $(this).find('input').focus();
+        $(this).find('textarea').focus();
     });
 });
 
