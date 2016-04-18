@@ -593,19 +593,3 @@ hr.invisible {
     height: 144px;
     margin-top: 5%;
 }
-
-/*
-    Signal Animations
-*/
-
-.signal-spot {
-    z-index: 11111;
-    position: absolute;
-    width: 15px;
-    height: 15px;
-    border-radius: 10px;
-    background: #ffffb3;
-    -webkit-transition-property: left, top, background, -webkit-transform;
-    -webkit-transition-duration: 0.2s, 0.2s;
-    -webkit-transition-timing-function: ease-in, ease-out;
-}
