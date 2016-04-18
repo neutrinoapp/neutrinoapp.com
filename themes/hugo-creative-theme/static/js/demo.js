@@ -11,6 +11,17 @@
     app.auth.login('test', 'test').then(init);
     var collection = window.collection = app.collection(collectionName);
     var objectId;
+    var signalVisibilityTime = 400;
+    var signalElements = {
+        macbook: $('.macbook-signal'),
+        iphone: $('.iphone-6-signal'),
+        htc: $('.htc-signal')  
+    };
+    var selectors = [
+        '#iphone-6-input',
+        '#mac-input',
+        '#htc-input'
+    ];
     
     function init() {
         collection.objects()
@@ -27,11 +38,6 @@
     function bind(object) {
         objectId = object.id;
 
-        var selectors = [
-            '#iphone-6-input',
-            '#mac-input',
-            '#htc-input'
-        ];
         var objectsPromises = new Array(selectors.length).fill(collection.object(objectId));
         Promise.all(objectsPromises)
             .then(function (realtimeObjects) {
@@ -42,6 +48,7 @@
                     var el = $(selector);
                     el.keyup(function () {
                         realtimeObject.text = $(this).val();
+                        sendSignal(el);
                     });
                     realtimeObject.on(Neutrino.ObjectEvents.propertyChanged, function() {
                         el.val(realtimeObject.text);
@@ -53,6 +60,32 @@
                     }, 200);
                 });
             });
+    }
+    
+    function sendSignal(element) {
+        switch (element.selector) {
+            case selectors[0]:
+                signalElements.iphone.addClass('send-signal');
+                signalElements.macbook.addClass('receive-signal');
+                signalElements.htc.addClass('receive-signal');
+                break;
+            case selectors[1]:
+                signalElements.macbook.addClass('send-signal');
+                signalElements.iphone.addClass('receive-signal');
+                signalElements.htc.addClass('receive-signal');
+            break;
+            case selectors[2]:
+                signalElements.htc.addClass('send-signal');
+                signalElements.macbook.addClass('receive-signal');
+                signalElements.iphone.addClass('receive-signal');
+            break;            
+        }
+        setTimeout(clearSignalColors, signalVisibilityTime);
+        
+        function clearSignalColors() {
+            $('.send-signal').removeClass('send-signal');
+            $('.receive-signal').removeClass('receive-signal');
+        }
     }
 }());
 

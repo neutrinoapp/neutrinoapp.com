@@ -593,3 +593,17 @@ hr.invisible {
     height: 144px;
     margin-top: 5%;
 }
+
+.signal-position {
+    font-size: 50px;
+    padding-bottom: 10px;
+    float: right;
+}
+
+.send-signal {
+    color: green;
+}
+
+.receive-signal {
+    color: yellow
+}
