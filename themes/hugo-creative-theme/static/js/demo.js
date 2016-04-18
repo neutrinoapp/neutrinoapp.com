@@ -45,7 +45,7 @@
                 realtimeObjects.forEach(function(realtimeObject, index) {
                     var selector = selectors[index];
                     var el = $(selector);
-                    el.keyup(function() {
+                    el.bind('input propertychange', function() {
                         realtimeObject.text = $(this).val();
                         $(el.selector.replace('input',
                             'signal')).addClass(

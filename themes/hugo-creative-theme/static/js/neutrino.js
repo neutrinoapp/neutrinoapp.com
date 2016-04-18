@@ -44924,12 +44924,8 @@ assert.equal = function assertEqual(l, r, msg) {
   };
 
   var collectObservers = !hasObserve();
-  var allObservers;
+  var allObservers = [];
   Observer._allObserversCount = 0;
-
-  if (collectObservers) {
-    allObservers = [];
-  }
 
   function addToAll(observer) {
     Observer._allObserversCount++;
