@@ -1,4 +1,4 @@
-(function () {
+(function() {
     var collectionName;
     if (localStorage.getItem('clientId')) {
         collectionName = localStorage.getItem('clientId');
@@ -17,12 +17,14 @@
         '#mac-input',
         '#htc-input'
     ];
-    
+
     function init() {
         collection.objects()
-            .then(function (data) {
+            .then(function(data) {
                 if (!data.length) {
-                    return collection.object({text: 'Type here! \n \n ( ^_^ )'});
+                    return collection.object({
+                        text: 'Type here! \n \n ( ^_^ )'
+                    });
                 }
 
                 return data[0];
@@ -33,32 +35,48 @@
     function bind(object) {
         objectId = object.id;
 
-        var objectsPromises = new Array(selectors.length).fill(collection.object(objectId));
+        var objectsPromises = new Array(selectors.length).fill(collection.object(
+            objectId));
         Promise.all(objectsPromises)
-            .then(function (realtimeObjects) {
+            .then(function(realtimeObjects) {
                 window.app.o = realtimeObjects;
 
-                realtimeObjects.forEach(function (realtimeObject, index) {
+                var clearSignalTimeout;
+                realtimeObjects.forEach(function(realtimeObject, index) {
                     var selector = selectors[index];
                     var el = $(selector);
-                    el.keyup(function () {
+                    el.keyup(function() {
                         realtimeObject.text = $(this).val();
-                        $(el.selector.replace('input', 'signal')).addClass('send-signal');
+                        $(el.selector.replace('input',
+                            'signal')).addClass(
+                            'send-signal');
+
+                        if (clearSignalTimeout) {
+                            clearTimeout(
+                                clearSignalTimeout);
+                        }
+
+                        clearSignalTimeout = setTimeout(
+                            clearSignalColors,
+                            signalVisibilityTime);
                     });
-                    realtimeObject.on(Neutrino.ObjectEvents.propertyChanged, function() {
-                        el.val(realtimeObject.text);
-                        $('.signal-position').addClass('receive-signal');
-                        setTimeout(clearSignalColors, signalVisibilityTime);
-                    });
+                    realtimeObject.on(Neutrino.ObjectEvents.propertyChanged,
+                        function() {
+                            el.val(realtimeObject.text);
+                            $('.signal-position').addClass(
+                                'receive-signal');
+                        });
                     el.val(realtimeObject.text);
 
-                    setInterval(function(){
+                    setInterval(function() {
                         el[0].scrollTop = el[0].scrollHeight;
                     }, 200);
-        
+
                     function clearSignalColors() {
-                        $('.send-signal').removeClass('send-signal');
-                        $('.receive-signal').removeClass('receive-signal');
+                        $('.send-signal').removeClass(
+                            'send-signal');
+                        $('.receive-signal').removeClass(
+                            'receive-signal');
                     }
                 });
             });
@@ -66,7 +84,7 @@
 }());
 
 $(function() {
-    $('.marvel-device').click(function () {
+    $('.marvel-device').click(function() {
         $(this).find('textarea').focus();
     });
 });
