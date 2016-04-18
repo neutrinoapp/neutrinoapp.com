@@ -12,11 +12,6 @@
     var collection = window.collection = app.collection(collectionName);
     var objectId;
     var signalVisibilityTime = 400;
-    var signalElements = {
-        macbook: $('.macbook-signal'),
-        iphone: $('.iphone-6-signal'),
-        htc: $('.htc-signal')  
-    };
     var selectors = [
         '#iphone-6-input',
         '#mac-input',
@@ -48,11 +43,11 @@
                     var el = $(selector);
                     el.keyup(function () {
                         realtimeObject.text = $(this).val();
-                        el.addClass('send-signal');
+                        $(el.selector.replace('input', 'signal')).addClass('send-signal');
                     });
                     realtimeObject.on(Neutrino.ObjectEvents.propertyChanged, function() {
                         el.val(realtimeObject.text);
-                        el.addClass('receive-signal');
+                        $('.signal-position').addClass('receive-signal');
                         setTimeout(clearSignalColors, signalVisibilityTime);
                     });
                     el.val(realtimeObject.text);

@@ -598,12 +598,19 @@ hr.invisible {
     font-size: 50px;
     padding-bottom: 10px;
     float: right;
+    margin: 5px;
 }
 
-.send-signal {
-    color: green;
+#mac-signal i {
+    margin-right: 15px;
+    margin-top: 15px;
+    font-size: 70px;
+}
+
+.send-signal i {
+    color: green !important;
 }
 
 .receive-signal {
-    color: yellow
+    color: yellow;
 }
