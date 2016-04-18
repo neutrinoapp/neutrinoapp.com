@@ -1,13 +1,60 @@
 {{ "<!-- DEMO -->" | safeHTML }}
-<!--<section class="bg-primary" id="about">
-    <div class="container">
+<section class="bg-primary" id="demo">
+    <div class="container-fluid test-two">
+        <div class="row demo-row">
+            <div class="device-container device-container-iphone-6">
+                <div class="marvel-device iphone6 black">
+                    <div class="top-bar"></div>
+                    <div class="sleep"></div>
+                    <div class="volume"></div>
+                    <div class="camera"></div>
+                    <div class="sensor"></div>
+                    <div class="speaker"></div>
+                    <div class="screen">
+                        <div id="iphone-6-signal">
+                            <i class="fa-wifi fa signal-position"></i>
+                        </div>
+                        <textarea id="iphone-6-input" class="input" type="text"></textarea>
+                    </div>
+                    <div class="home"></div>
+                    <div class="bottom-bar"></div>
+                </div>
+            </div>
+
+            <div class="device-container device-container-right device-container-htc">
+                <div class="marvel-device htc-one">
+                    <div class="top-bar"></div>
+                    <div class="camera"></div>
+                    <div class="sensor"></div>
+                    <div class="speaker"></div>
+                    <div class="screen">
+                        <div id="htc-signal">
+                            <i class="fa-wifi fa signal-position"></i>
+                        </div>
+                        <textarea id="htc-input" class="input" type="text"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row center-block">
+            <div id="server" class="demo-icon server center-block"></div>
+        </div>
+
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading">{{ with .Site.Params.about.headline }}{{ . }}{{ end }}</h2>
-                <hr class="light">
-                <p class="text-faded">{{ with .Site.Params.about.description }}{{ . | markdownify }}{{ end }}</p>
-                <a href="#" class="btn btn-default btn-xl">{{ with .Site.Params.about.buttonText }}{{ . }}{{ end }}</a>
+            <div class="device-container device-container-mac center-block">
+                <div class="marvel-device macbook">
+                    <div class="top-bar"></div>
+                    <div class="camera"></div>
+                    <div class="screen">                  
+                        <div id="mac-signal">
+                            <i class="fa-wifi fa signal-position"></i>
+                        </div>
+                        <textarea id="mac-input" class="input" type="text"></textarea>
+                    </div>
+                    <div class="bottom-bar"></div>
+                </div>
             </div>
         </div>
     </div>
-</section>-->
+</section>
