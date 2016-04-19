@@ -1,4 +1,4 @@
-(function() {
+(function () {
     var collectionName;
     if (localStorage.getItem('clientId')) {
         collectionName = localStorage.getItem('clientId');
@@ -19,15 +19,23 @@
     ];
 
     function init() {
-        collection.objects()
-            .then(function(data) {
+        collection.objects({realtime: false})
+            .then(function (data) {
+                var defaultText = 'Type here! \n \n ( ^_^ )';
+
                 if (!data.length) {
                     return collection.object({
-                        text: 'Type here! \n \n ( ^_^ )'
+                        text: defaultText
                     });
                 }
 
-                return data[0];
+                var item = data[0];
+                if (!item.text) {
+                    item.text = defaultText;
+                    return item.update();
+                }
+
+                return item;
             })
             .then(bind)
     }
@@ -37,14 +45,14 @@
 
         var objectsPromises = new Array(selectors.length).fill(collection.object(objectId));
         Promise.all(objectsPromises)
-            .then(function(realtimeObjects) {
+            .then(function (realtimeObjects) {
                 window.app.o = realtimeObjects;
 
                 var clearSignalTimeout;
-                realtimeObjects.forEach(function(realtimeObject, index) {
+                realtimeObjects.forEach(function (realtimeObject, index) {
                     var selector = selectors[index];
                     var el = $(selector);
-                    el.bind('input propertychange', function() {
+                    el.bind('input propertychange', function () {
                         realtimeObject.text = $(this).val();
                         $(el.selector.replace('input', 'signal')).addClass('send-signal');
 
@@ -54,13 +62,13 @@
 
                         clearSignalTimeout = setTimeout(clearSignalColors, signalVisibilityTime);
                     });
-                    realtimeObject.on(Neutrino.ObjectEvents.propertyChanged, function() {
+                    realtimeObject.on(Neutrino.ObjectEvents.propertyChanged, function () {
                         el.val(realtimeObject.text);
                         $('.signal-position').addClass('receive-signal');
                     });
                     el.val(realtimeObject.text);
 
-                    setInterval(function() {
+                    setInterval(function () {
                         el[0].scrollTop = el[0].scrollHeight;
                     }, 200);
 
@@ -73,8 +81,8 @@
     }
 }());
 
-$(function() {
-    $('.marvel-device').click(function() {
+$(function () {
+    $('.marvel-device').click(function () {
         $(this).find('textarea').focus();
     });
 });

@@ -7619,7 +7619,7 @@ module.exports={
   "_args": [
     [
       "autobahn@^0.9.9",
-      "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript"
+      "/home/local//gngeorgiev/stuff/neutrino-javascript"
     ]
   ],
   "_from": "autobahn@>=0.9.9 <0.10.0",
@@ -7649,7 +7649,7 @@ module.exports={
   "_shasum": "e99ef1ea9b2c98a55c44fb19bb45cebc1f521907",
   "_shrinkwrap": null,
   "_spec": "autobahn@^0.9.9",
-  "_where": "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript",
+  "_where": "/home/local//gngeorgiev/stuff/neutrino-javascript",
   "author": {
     "name": "Tavendo GmbH"
   },
@@ -29326,7 +29326,7 @@ module.exports={
   "_args": [
     [
       "elliptic@^6.0.0",
-      "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign"
+      "/home/local//gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign"
     ]
   ],
   "_from": "elliptic@>=6.0.0 <7.0.0",
@@ -29357,7 +29357,7 @@ module.exports={
   "_shasum": "18e46d7306b0951275a2d42063270a14b74ebe99",
   "_shrinkwrap": null,
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/local/TELERIK/gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign",
+  "_where": "/home/local//gngeorgiev/stuff/neutrino-javascript/node_modules/browserify-sign",
   "author": {
     "email": "fedor@indutny.com",
     "name": "Fedor Indutny"
