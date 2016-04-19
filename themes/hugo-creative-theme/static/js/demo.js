@@ -35,8 +35,7 @@
     function bind(object) {
         objectId = object.id;
 
-        var objectsPromises = new Array(selectors.length).fill(collection.object(
-            objectId));
+        var objectsPromises = new Array(selectors.length).fill(collection.object(objectId));
         Promise.all(objectsPromises)
             .then(function(realtimeObjects) {
                 window.app.o = realtimeObjects;
@@ -47,25 +46,18 @@
                     var el = $(selector);
                     el.bind('input propertychange', function() {
                         realtimeObject.text = $(this).val();
-                        $(el.selector.replace('input',
-                            'signal')).addClass(
-                            'send-signal');
+                        $(el.selector.replace('input', 'signal')).addClass('send-signal');
 
                         if (clearSignalTimeout) {
-                            clearTimeout(
-                                clearSignalTimeout);
+                            clearTimeout(clearSignalTimeout);
                         }
 
-                        clearSignalTimeout = setTimeout(
-                            clearSignalColors,
-                            signalVisibilityTime);
+                        clearSignalTimeout = setTimeout(clearSignalColors, signalVisibilityTime);
                     });
-                    realtimeObject.on(Neutrino.ObjectEvents.propertyChanged,
-                        function() {
-                            el.val(realtimeObject.text);
-                            $('.signal-position').addClass(
-                                'receive-signal');
-                        });
+                    realtimeObject.on(Neutrino.ObjectEvents.propertyChanged, function() {
+                        el.val(realtimeObject.text);
+                        $('.signal-position').addClass('receive-signal');
+                    });
                     el.val(realtimeObject.text);
 
                     setInterval(function() {
@@ -73,10 +65,8 @@
                     }, 200);
 
                     function clearSignalColors() {
-                        $('.send-signal').removeClass(
-                            'send-signal');
-                        $('.receive-signal').removeClass(
-                            'receive-signal');
+                        $('.send-signal').removeClass('send-signal');
+                        $('.receive-signal').removeClass('receive-signal');
                     }
                 });
             });
