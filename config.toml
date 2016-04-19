@@ -31,7 +31,7 @@ theme = "hugo-creative-theme"
 		brand = "![alt text](img/logo.png)Neutrino"
 
 		[params.navigation.links]
-			about     = "About"
+			demo      = "Demo"
 			services  = "Features"
 			portfolio = "Access"
 			contact   = "Contact"
