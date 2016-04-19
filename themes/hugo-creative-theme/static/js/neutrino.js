@@ -65943,8 +65943,8 @@ var RealtimeObject = exports.RealtimeObject = function (_NeutrinoObject) {
             var messageHistory = this._getProp('messageHistory');
             if (messageHistory[historyKey]) {
                 var lastMessage = messageHistory[historyKey];
-                var lastMessageTimestamp = new Date(lastMessage.timestamp).getDate();
-                var newMessageTimestamp = new Date(m.timestamp).getDate();
+                var lastMessageTimestamp = new Date(lastMessage.timestamp);
+                var newMessageTimestamp = new Date(m.timestamp);
                 if (newMessageTimestamp < lastMessageTimestamp || newMessageTimestamp === lastMessageTimestamp) {
                     return;
                 }
