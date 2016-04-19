@@ -494,13 +494,23 @@ hr.invisible {
     border-width: 0;
 }
 
-#hero {
+.hero-position {
 	position: absolute;
 	left: 0;
 	top: 0;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+@media (max-width: 480px) {
+    #hero-video {
+        display: none;
+    }
+    
+    #hero-image {
+        display: block;
+    }
 }
 
 #demo {

@@ -1,10 +1,11 @@
 {{ "<!-- HEADER -->" | safeHTML }}
-<header>	
-	<video autoplay loop id="hero">
+<header>
+    <img class="hero-position" id="hero-image" src="../img/header.jpg" alt>
+	<video autoplay loop class="hero-position" id="hero-video">
 		<source src="../img/header.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser.
 		<source src="../img/header.webm" type="video/webm" />Your browser does not support the video tag. I suggest you upgrade your browser.
 	</video>
-			
+
     <div class="header-content">
 		<div class="header-content-inner">
 			<h1>{{ with .Site.Params.hero.slogan }}{{ . }}{{ end }}</h1>
@@ -12,8 +13,8 @@
             <p>{{ with .Site.Params.hero.subtitle }}{{ . | markdownify }}{{ end }}</p>
             <a href="#access" class="btn btn-primary btn-xl page-scroll" onclick="app.trackHeroSubscribe()">{{ with .Site.Params.hero.buttonText }}{{ . }}{{ end }}</a>
             <hr class="invisible">
-            <a href="#demo" class="btn btn-secondary btn-xl page-scroll" disabled style="color: red" onclick="app.trackTryDemo()">{{ with .Site.Params.hero.demoText }}{{ . }}{{ end }} <br/> (Coming soon)</a>
-			
+            <a href="#demo" class="btn btn-secondary btn-xl page-scroll" style="color: red" onclick="app.trackTryDemo()">{{ with .Site.Params.hero.demoText }}{{ . }}{{ end }}</a>
+
 			<hr class="invisible">
 			<div>
 				<iframe style="width:130px" id="github-iframe" src="https://ghbtns.com/github-btn.html?user=neutrinoapp&repo=neutrino&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
